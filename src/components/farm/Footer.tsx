@@ -1,0 +1,10 @@
+import { Facebook, Instagram } from "lucide-react";
+import { images, navItems } from "@/content/farmData";
+import { AnchorButton, Brand, Reveal } from "./shared";
+
+export function Footer() {
+  return <>
+    <section className="relative flex min-h-[65svh] items-center justify-center overflow-hidden px-5 py-24 text-center"><img src={images.sunset} alt="Sunset over The Banyan Farms" width={1600} height={1008} loading="lazy" className="absolute inset-0 h-full w-full object-cover"/><div className="hero-scrim absolute inset-0"/><Reveal className="relative z-10 text-hero-foreground"><h2 className="font-serif text-6xl leading-none md:text-8xl">Leave the City Behind.</h2><p className="mt-6 text-lg leading-7">Come for the weekend.<br/>Leave with a story.</p><AnchorButton href="#contact" variant="cream" className="mt-8">Plan Your Escape</AnchorButton></Reveal></section>
+    <footer className="bg-primary px-5 py-14 text-primary-foreground md:px-10"><div className="mx-auto max-w-7xl"><div className="grid gap-10 border-b border-primary-foreground/15 pb-10 md:grid-cols-[1fr_2fr_auto]"><div><Brand light/><p className="mt-5 max-w-xs text-sm text-primary-foreground/60">Escape the city. Find your wild.</p></div><nav className="grid grid-cols-2 gap-x-8 gap-y-3 sm:grid-cols-4" aria-label="Footer navigation">{navItems.map(([label, id]) => <a className="text-xs text-primary-foreground/70 transition-colors hover:text-accent" key={id} href={`#${id}`}>{label}</a>)}</nav><div className="flex gap-3"><a href="#contact" aria-label="Instagram" className="grid size-10 place-items-center rounded-full border border-primary-foreground/20 hover:text-accent"><Instagram className="size-4"/></a><a href="#contact" aria-label="Facebook" className="grid size-10 place-items-center rounded-full border border-primary-foreground/20 hover:text-accent"><Facebook className="size-4"/></a></div></div><p className="pt-8 text-xs text-primary-foreground/50">© 2026 The Banyan Farms. All rights reserved.</p></div></footer>
+  </>;
+}
