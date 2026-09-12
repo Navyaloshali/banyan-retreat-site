@@ -1,24 +1,27 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+import { AboutExperience } from "@/components/farm/AboutExperience";
+import { Contact } from "@/components/farm/Contact";
+import { FoodBonfire } from "@/components/farm/FoodBonfire";
+import { Footer } from "@/components/farm/Footer";
+import { Hero } from "@/components/farm/Hero";
+import { Navbar } from "@/components/farm/Navbar";
+import { PackagesGallery } from "@/components/farm/PackagesGallery";
+import { StaysActivities } from "@/components/farm/StaysActivities";
+import { Testimonials } from "@/components/farm/Testimonials";
+
 export const Route = createFileRoute("/")({
+  head: () => ({ meta: [
+    { title: "The Banyan Farms | Countryside Farm Getaway" },
+    { name: "description", content: "Escape the city for farmhouse stays, fresh food, outdoor adventures, games and bonfire nights at The Banyan Farms." },
+    { property: "og:title", content: "The Banyan Farms | Countryside Farm Getaway" },
+    { property: "og:description", content: "Escape the city. Find your wild." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
+  ]}),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
+  return <><Navbar/><main><Hero/><AboutExperience/><StaysActivities/><FoodBonfire/><PackagesGallery/><Testimonials/><Contact/></main><Footer/></>;
 }
