@@ -23,6 +23,6 @@ export function Navbar() {
       <div className="hidden lg:block"><AnchorButton href="#contact" className="h-11">Plan Your Escape</AnchorButton></div>
       <Button variant="ghost" size="icon" className="lg:hidden" aria-label={open ? "Close menu" : "Open menu"} onClick={() => setOpen((value) => !value)}>{open ? <X /> : <Menu />}</Button>
     </div>
-    <div className={cn("grid overflow-hidden transition-all duration-300 lg:hidden", open ? "grid-rows-[1fr] border-t border-border" : "grid-rows-[0fr]")}><nav className="min-h-0 bg-background px-5" aria-label="Mobile navigation"><div className="flex flex-col py-4">{navItems.map(([label, id]) => <a key={id} href={`#${id}`} onClick={() => setOpen(false)} className="border-b border-border py-3 text-sm font-semibold">{label}</a>)}<AnchorButton href="#contact" className="mt-5" >Plan Your Escape</AnchorButton></div></nav></div>
+    <div className={cn("overflow-hidden bg-background transition-all duration-300 lg:hidden", open ? "max-h-[40rem] border-t border-border" : "max-h-0")}><nav className="px-5" aria-label="Mobile navigation"><div className="flex flex-col py-4">{navItems.map(([label, id]) => <a key={id} href={`#${id}`} onClick={() => setOpen(false)} className="border-b border-border py-3 text-sm font-semibold">{label}</a>)}<AnchorButton href="#contact" className="mt-5" >Plan Your Escape</AnchorButton></div></nav></div>
   </header>;
 }
