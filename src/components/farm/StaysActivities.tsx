@@ -1,0 +1,15 @@
+import { ArrowRight, Check, Users } from "lucide-react";
+import { activityGroups, stays } from "@/content/farmData";
+import { AnchorButton, Reveal, SectionHeading } from "./shared";
+
+export function StaysActivities() {
+  return <>
+    <section id="stay" className="px-5 py-24 md:px-10 md:py-32"><div className="mx-auto max-w-7xl"><Reveal><SectionHeading eyebrow="Make yourself at home" title="Stay A Little Longer" intro="Wake up to birdsong instead of traffic." /></Reveal>
+      <div className="grid gap-6 lg:grid-cols-3">{stays.map((stay, index) => <Reveal key={stay.name} delay={index * 90}><article className="group overflow-hidden rounded-2xl bg-card shadow-md"><div className="aspect-[4/3] overflow-hidden"><img src={stay.image} alt={stay.name} width={1000} height={750} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" /></div><div className="p-6"><h3 className="font-serif text-3xl">{stay.name}</h3><p className="mt-2 min-h-12 text-sm leading-6 text-muted-foreground">{stay.description}</p><div className="mt-5 space-y-2 border-t border-border pt-4 text-xs text-muted-foreground"><p className="flex items-center gap-2"><Users className="size-4 text-accent" />{stay.capacity}</p><p>{stay.amenities}</p></div><a href="#contact" className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-primary">Explore Stay <ArrowRight className="size-4" /></a></div></article></Reveal>)}</div>
+    </div></section>
+    <section id="activities" className="bg-secondary/55 px-5 py-24 md:px-10 md:py-32"><div className="mx-auto max-w-7xl"><Reveal><SectionHeading eyebrow="Something for every mood" title={<>Come for the Stay.<br/><em>Stay for the Fun.</em></>} /></Reveal>
+      <div className="grid gap-5 md:grid-cols-2">{activityGroups.map((group, index) => <Reveal key={group.title} delay={index * 70}><article className="group grid min-h-72 overflow-hidden rounded-2xl bg-card shadow-sm sm:grid-cols-[42%_1fr]"><div className="overflow-hidden"><img src={group.image} alt={`${group.title} at The Banyan Farms`} width={800} height={800} loading="lazy" className="h-52 w-full object-cover transition-transform duration-700 group-hover:scale-105 sm:h-full" /></div><div className="p-6"><div className="mb-4 flex items-center gap-3"><group.icon className="size-5 text-accent"/><h3 className="font-serif text-2xl">{group.title}</h3></div><ul className="grid grid-cols-2 gap-x-3 gap-y-3">{group.items.map((item) => <li key={item} className="flex items-center gap-2 text-xs text-muted-foreground"><Check className="size-3 shrink-0 text-primary" />{item}</li>)}</ul></div></article></Reveal>)}</div>
+      <Reveal className="mt-10 text-center"><AnchorButton href="#contact">See All Activities</AnchorButton></Reveal>
+    </div></section>
+  </>;
+}
